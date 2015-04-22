@@ -41,8 +41,8 @@ public class satisfy extends Application {
         
 
         // ボタン
-        Button button = new Button("Load");
-        button.setOnAction(new EventHandler<ActionEvent>() {
+        Button loadbtn = new Button("Load");
+        loadbtn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 // テキストボックスから取得した文字列を
                 // WebEngine でロードする
@@ -52,7 +52,7 @@ public class satisfy extends Application {
         });
         
         
-        hbox.getChildren().add(button);
+        hbox.getChildren().add(loadbtn);
         
         // HBoxをVBoxに貼る
         vbox.getChildren().add(hbox);
