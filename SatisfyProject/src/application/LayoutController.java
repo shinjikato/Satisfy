@@ -10,21 +10,47 @@ import javafx.scene.control.TextField;
 import javafx.scene.web.WebView;
 
 public class LayoutController implements Initializable {
-	  @FXML
-	  private TextField urlField;
-	  @FXML
-	  private WebView leftWebview;
-	  @FXML
-	  private WebView rightWebview;
-	  
-	  private WebView lastClickWebview;
-	  
-	  @FXML
-	  private void setUrlAction(ActionEvent event) {
-	    String url = urlField.getText();
-	    leftWebview.getEngine().load(url);
-	  }
-
+	@FXML
+	private TextField urlField;
+	@FXML
+	private WebView leftWebview;
+	@FXML
+	private WebView rightWebview;
+	
+	private WebView lastClickWebview;
+	
+	 
+	@FXML
+	private void setUrlAction(ActionEvent event) {
+		String url = urlField.getText();
+		lastClickWebview.getEngine().load(url);
+	}
+	
+	@FXML
+	private void backButtonAction(ActionEvent event){
+		//バックボタンのメソッド
+	}
+	
+	@FXML
+	private void nextButtonAction(ActionEvent event){
+		//進むボタンのメソッド
+	}
+	
+	@FXML
+	private void reloadButtonAction(ActionEvent event){
+		//更新ボタン
+	}
+	
+	@FXML
+	private void leftDivideAction(ActionEvent event){
+		//左に分けるのボタン
+	}
+	
+	@FXML
+	private void rightDivideAction(ActionEvent event){
+		//右に分けるボタン
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -33,7 +59,7 @@ public class LayoutController implements Initializable {
 		leftWebview.getEngine().load(startUrl);
 		lastClickWebview = rightWebview;
 		
-		System.setProperty("http.proxy","proxy.salesio-sp.ac.jp");
+		System.setProperty("http.proxyHost","proxy.salesio-sp.ac.jp");
 	    System.setProperty("http.proxyPort", "7080");
 		
 	}
