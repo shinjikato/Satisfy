@@ -15,7 +15,7 @@
             <Button mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="26.0" prefWidth="28.0" />
             <Button mnemonicParsing="false" onAction="#reloadButtonAction" prefHeight="26.0" prefWidth="28.0" />
             <Button mnemonicParsing="false" onAction="#leftDivideAction" prefHeight="26.0" prefWidth="28.0" />
-            <Button mnemonicParsing="false" onAction="#rightDivideAction"prefHeight="26.0" prefWidth="28.0" />
+            <Button mnemonicParsing="false" onAction="#rightDivideAction" prefHeight="26.0" prefWidth="28.0" />
             <TextField fx:id="urlField" prefHeight="26.0" prefWidth="435.0" />
             <SplitMenuButton mnemonicParsing="false" onAction="#setUrlAction" prefHeight="26.0" prefWidth="28.0">
               <items>

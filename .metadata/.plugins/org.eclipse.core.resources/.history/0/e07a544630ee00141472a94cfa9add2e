@@ -46,7 +46,7 @@ public class LayoutController implements Initializable {
 	@FXML
 	private void nextButtonAction(ActionEvent event){
 		//進むボタンのメソッド
-		final WebHistory history=lastClickWebview.getEngine().getHistory();
+		final WebHistory history=eng.getHistory();
 	    ObservableList<WebHistory.Entry> entryList=history.getEntries();
 	    int currentIndex=history.getCurrentIndex();
 //	    Out("currentIndex = "+currentIndex);
