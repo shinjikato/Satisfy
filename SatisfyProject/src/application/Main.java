@@ -3,7 +3,9 @@ package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.layout.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.fxml.FXML;
@@ -16,7 +18,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Layout.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Layout.fxml"));
 			Scene scene = new Scene(root,600,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
