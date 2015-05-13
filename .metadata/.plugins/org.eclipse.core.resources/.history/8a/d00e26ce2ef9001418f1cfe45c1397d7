@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LayoutController">
+   <children>
+      <!-- <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"> -->
+         <!-- <children> 
+			<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="31.0" prefWidth="603.0">
+               <children> -->
+                  <HBox prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: bbaacc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#backButtonAction" prefHeight="26.0" prefWidth="27.0" />
+                        <Button mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="26.0" prefWidth="28.0" />
+                        <Button mnemonicParsing="false" onAction="#reloadButtonAction" prefHeight="26.0" prefWidth="28.0" />
+                        <Button mnemonicParsing="false" onAction="#leftDivideAction" prefHeight="26.0" prefWidth="28.0" />
+                        <Button mnemonicParsing="false" onAction="#rightDivideAction" prefHeight="26.0" prefWidth="28.0" />
+                        <AnchorPane>
+                           <children>
+                              <TextField fx:id="urlField" prefHeight="26.0" prefWidth="416.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <SplitMenuButton mnemonicParsing="false" onAction="#setUrlAction" prefHeight="26.0" prefWidth="28.0">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                          </items>
+                        </SplitMenuButton>
+                     </children>
+                  </HBox>
+               <!-- </children>
+			</AnchorPane>
+			<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="603.0">
+               <children> -->
+               <SplitPane fx:id="splitPane" orientation="HORIZONTAL"prefHeight="370.0" prefWidth="517.0" style="-fx-background-color: aabbcc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+                  <HBox prefHeight="370.0" prefWidth="517.0" style="-fx-background-color: aabbcc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <HBox prefHeight="325.0" prefWidth="300.0" style="-fx-background-color: ffaaff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane>
+                                       <children>
+                                          <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="366.0" prefWidth="261.0">
+                                       <children> <!-- tabClosingPolicy="UNAVAILABLE" -->
+                                          <TabPane prefHeight="200.0" prefWidth="200.0"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <tabs>
+                                              <Tab text="Untitled Tab 1">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <WebView fx:id="leftWebview" prefHeight="325.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                </content>
+                                              </Tab>
+                                            </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="361.0" prefWidth="301.0">
+                           <children>
+                              <HBox prefHeight="361.0" prefWidth="300.0" style="-fx-background-color: ffaaff;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="374.0" prefWidth="260.0">
+                                       <children>
+                                          <TabPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <tabs>
+                                                <Tab text="Untitled Tab 2">
+                                                   <content>
+                                                      <AnchorPane>
+                                                         <children>
+                                                            <WebView fx:id="rightWebview" prefHeight="325.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                             </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane>
+                                       <children>
+                                          <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </SplitPane>
+               <!--</children>
+            </AnchorPane>
+		</children> -->
+      <!-- </VBox> -->
+   </children>
+</AnchorPane>
