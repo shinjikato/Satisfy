@@ -6,8 +6,11 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
@@ -19,6 +22,14 @@ public class LayoutController implements Initializable {
 	private WebView leftWebview;
 	@FXML
 	private WebView rightWebview;
+	@FXML
+	private TabPane leftTabPane;
+	@FXML
+	private Tab leftAddTab;
+	@FXML
+	private TabPane rightTabPane;
+	@FXML
+	private Tab rightAddTab;
 	
 	private WebView lastClickWebview;
 	
@@ -31,7 +42,7 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void backButtonAction(ActionEvent event){
-		//ƒoƒbƒNƒ{ƒ^ƒ“‚Ìƒƒ\ƒbƒh
+		//ï¿½oï¿½bï¿½Nï¿½{ï¿½^ï¿½ï¿½ï¿½Ìƒï¿½ï¿½\ï¿½bï¿½h
 		WebHistory history = lastClickWebview.getEngine().getHistory();
 		ObservableList<WebHistory.Entry> entryList=history.getEntries();
 	    int currentIndex=history.getCurrentIndex();
@@ -45,7 +56,7 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void nextButtonAction(ActionEvent event){
-		//i‚Şƒ{ƒ^ƒ“‚Ìƒƒ\ƒbƒh
+		//ï¿½iï¿½Şƒ{ï¿½^ï¿½ï¿½ï¿½Ìƒï¿½ï¿½\ï¿½bï¿½h
 		final WebHistory history=lastClickWebview.getEngine().getHistory();
 	    ObservableList<WebHistory.Entry> entryList=history.getEntries();
 	    int currentIndex=history.getCurrentIndex();
@@ -59,17 +70,38 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void reloadButtonAction(ActionEvent event){
-		//XVƒ{ƒ^ƒ“
+		//ï¿½Xï¿½Vï¿½{ï¿½^ï¿½ï¿½
 	}
 	
 	@FXML
 	private void leftDivideAction(ActionEvent event){
-		//¶‚É•ª‚¯‚é‚Ìƒ{ƒ^ƒ“
+		//ï¿½ï¿½ï¿½É•ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒ{ï¿½^ï¿½ï¿½
 	}
 	
 	@FXML
 	private void rightDivideAction(ActionEvent event){
-		//‰E‚É•ª‚¯‚éƒ{ƒ^ƒ“
+		//ï¿½Eï¿½É•ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½
+	}
+	
+	@FXML
+	private void leftTabAddAction(Event event){
+		Tab tab = new Tab();
+		WebView web = new WebView();
+		tab.setText("new Tab");
+		web.getEngine().load("http://www.google.com");
+		tab.setContent(web);
+		leftTabPane.getTabs().add(leftTabPane.getTabs().size()-1,tab);
+		leftTabPane.getSelectionModel().select(tab);
+	}
+	@FXML
+	private void rightTabAddAction(Event event){
+		Tab tab = new Tab();
+		WebView web = new WebView();
+		tab.setText("new Tab");
+		web.getEngine().load("http://www.google.com");
+		tab.setContent(web);
+		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
+		rightTabPane.getSelectionModel().select(tab);
 	}
 	
 	@Override
