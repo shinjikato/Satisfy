@@ -12,11 +12,11 @@
    <children>
        <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: bbaacc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-             <Button mnemonicParsing="false" onAction="#backButtonAction" prefHeight="27.0" prefWidth="47.0">
+             <Button mnemonicParsing="false" onAction="#backButtonAction" prefHeight="21.0" prefWidth="30.0">
                <graphic>
-                  <ImageView fitHeight="9.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="13.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Volumes/Shinji/素材/arrow_back.jpg" />
+                        <Image url="@../../resource/button_icon/back.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -24,7 +24,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Volumes/Shinji/素材/arrow_next.jpg" />
+                        <Image url="@../../resource/button_icon/next.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -32,7 +32,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Volumes/Shinji/素材/reset.jpg" />
+                        <Image url="@../../resource/button_icon/reload.png" />
                      </image>
                   </ImageView>
                </graphic></Button>

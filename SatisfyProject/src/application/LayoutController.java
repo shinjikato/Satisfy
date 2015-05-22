@@ -131,9 +131,10 @@ public class LayoutController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		String startUrl = "http://www.google.com";
-		rightWebview.getEngine().load(startUrl);
-		leftWebview.getEngine().load(startUrl);
+		leftTabPane.getTabs().remove(0);
+		rightTabPane.getTabs().remove(0);
+		//leftTabAddAction(null);
+		//rightTabAddAction(null);
 		lastClickWebview = rightWebview;
 		
 		System.setProperty("http.proxyHost","proxy.salesio-sp.ac.jp");
