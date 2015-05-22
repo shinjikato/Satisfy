@@ -38,6 +38,14 @@ public class LayoutController implements Initializable {
 	@FXML
 	private void setUrlAction(ActionEvent event) {
 		String url = urlField.getText();
+		if(url.substring(0,7).equals("http://") == false){
+			if(url.substring(0,3).equals("www")){
+				url = "http://" + url;
+			}else{
+				url = "http://www." + url;
+			}	
+		}
+		urlField.setText(url);
 		lastClickWebview.getEngine().load(url);
 	}
 	
@@ -113,6 +121,11 @@ public class LayoutController implements Initializable {
 		Tab selecttab = tabPane.getSelectionModel().getSelectedItem();
 		WebView node = (WebView)selecttab.getContent();
 		lastClickWebview = node;
+	}
+	
+	@FXML
+	private void textFiledEnterAction(ActionEvent event){
+		setUrlAction(event);
 	}
 	
 	@Override

@@ -46,7 +46,7 @@
            <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
        </SplitMenuButton>
-       <TextField fx:id="urlField" layoutX="239.0" prefHeight="26.0" prefWidth="546.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
+       <TextField fx:id="urlField" layoutX="239.0" onAction="#textFiledEnterAction" prefHeight="26.0" prefWidth="546.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
        <SplitPane dividerPositions="0.5" prefHeight="370.0" prefWidth="517.0" style="-fx-background-color: aabbcc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
           <items>
              <AnchorPane>
