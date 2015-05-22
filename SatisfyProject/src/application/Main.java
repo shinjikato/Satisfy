@@ -19,7 +19,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Layout.fxml"));
-			Scene scene = new Scene(root,600,400);
+			Scene scene = new Scene(root,1920,1080);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			//leftWebview.getEngine().load("http://www.google.com");

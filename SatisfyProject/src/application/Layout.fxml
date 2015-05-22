@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -7,13 +8,34 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="569.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LayoutController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LayoutController">
    <children>
        <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: bbaacc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-             <Button mnemonicParsing="false" onAction="#backButtonAction" prefHeight="26.0" prefWidth="27.0" />
-             <Button mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="26.0" prefWidth="28.0" />
-             <Button mnemonicParsing="false" onAction="#reloadButtonAction" prefHeight="26.0" prefWidth="28.0" />
+             <Button mnemonicParsing="false" onAction="#backButtonAction" prefHeight="27.0" prefWidth="47.0">
+               <graphic>
+                  <ImageView fitHeight="9.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Volumes/Shinji/素材/arrow_back.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+             <Button mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="26.0" prefWidth="35.0">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Volumes/Shinji/素材/arrow_next.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+             <Button mnemonicParsing="false" onAction="#reloadButtonAction" prefHeight="26.0" prefWidth="28.0">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Volumes/Shinji/素材/reset.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
              <Button mnemonicParsing="false" onAction="#leftDivideAction" prefHeight="26.0" prefWidth="28.0" />
              <Button mnemonicParsing="false" onAction="#rightDivideAction" prefHeight="26.0" prefWidth="28.0" />
           </children>
@@ -24,13 +46,13 @@
            <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
        </SplitMenuButton>
-       <TextField fx:id="urlField" prefHeight="26.0" prefWidth="416.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
+       <TextField fx:id="urlField" layoutX="239.0" prefHeight="26.0" prefWidth="546.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
        <SplitPane dividerPositions="0.5" prefHeight="370.0" prefWidth="517.0" style="-fx-background-color: aabbcc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
           <items>
              <AnchorPane>
                 <children>
                    <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" /> <!-- tabClosingPolicy="UNAVAILABLE" -->
-                   <TabPane fx:id="leftTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                   <TabPane fx:id="leftTabPane" onMouseClicked="#selectTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <tabs>
                        <Tab text="Untitled Tab 1">
                          <content>
@@ -52,7 +74,7 @@
              </AnchorPane>
              <AnchorPane prefHeight="361.0" prefWidth="301.0">
                 <children>
-                   <TabPane fx:id="rightTabPane" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
+                   <TabPane fx:id="rightTabPane" onMouseClicked="#selectTabPane" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
                       <tabs>
                          <Tab text="Untitled Tab 2">
                             <content>

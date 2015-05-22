@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -92,16 +93,26 @@ public class LayoutController implements Initializable {
 		tab.setContent(web);
 		leftTabPane.getTabs().add(leftTabPane.getTabs().size()-1,tab);
 		leftTabPane.getSelectionModel().select(tab);
+		lastClickWebview = (WebView)tab.getContent();
 	}
 	@FXML
 	private void rightTabAddAction(Event event){
 		Tab tab = new Tab();
-		WebView web = new WebView();
 		tab.setText("new Tab");
+		WebView web = new WebView();
 		web.getEngine().load("http://www.google.com");
 		tab.setContent(web);
 		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
 		rightTabPane.getSelectionModel().select(tab);
+		lastClickWebview = (WebView)tab.getContent();
+	}
+	
+	@FXML
+	private void selectTabPane(Event event){
+		TabPane tabPane = (TabPane)event.getSource();
+		Tab selecttab = tabPane.getSelectionModel().getSelectedItem();
+		WebView node = (WebView)selecttab.getContent();
+		lastClickWebview = node;
 	}
 	
 	@Override
