@@ -80,6 +80,7 @@ public class LayoutController implements Initializable {
 	@FXML
 	private void reloadButtonAction(ActionEvent event){
 		//�X�V�{�^��
+		lastClickWebview.getEngine().reload();
 	}
 	
 	@FXML
@@ -94,7 +95,7 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void leftTabAddAction(Event event){
-		Tab tab = new Tab();
+		DraggableTab tab = new DraggableTab("new Tab");
 		WebView web = new WebView();
 		tab.setText("new Tab");
 		web.getEngine().load("http://www.google.com");
@@ -105,7 +106,7 @@ public class LayoutController implements Initializable {
 	}
 	@FXML
 	private void rightTabAddAction(Event event){
-		Tab tab = new Tab();
+		DraggableTab tab = new DraggableTab("new Tab");
 		tab.setText("new Tab");
 		WebView web = new WebView();
 		web.getEngine().load("http://www.google.com");
