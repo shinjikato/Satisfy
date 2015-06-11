@@ -38,7 +38,7 @@ public class LayoutController implements Initializable {
 	@FXML
 	private void setUrlAction(ActionEvent event) {
 		String url = urlField.getText();
-		if(url.substring(0,7).equals("http://") == false){
+		if(url.substring(0,7).equals("http://") == false && url.substring(0,8).equals("https://") == false){
 			if(url.substring(0,3).equals("www")){
 				url = "http://" + url;
 			}else{
@@ -122,6 +122,8 @@ public class LayoutController implements Initializable {
 		Tab selecttab = tabPane.getSelectionModel().getSelectedItem();
 		WebView node = (WebView)selecttab.getContent();
 		lastClickWebview = node;
+		String url = lastClickWebview.getEngine().getLocation();
+		urlField.setText(url);
 	}
 	
 	@FXML
