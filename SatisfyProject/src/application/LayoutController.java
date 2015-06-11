@@ -4,7 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -95,10 +98,23 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void leftTabAddAction(Event event){
-		DraggableTab tab = new DraggableTab("new Tab");
+		DraggableTab tab = new DraggableTab("");
 		WebView web = new WebView();
-		tab.setText("new Tab");
+		//tab.setText("new Tab");
 		web.getEngine().load("http://www.google.com");
+		web.getEngine().getLoadWorker().stateProperty().addListener(
+		        new ChangeListener<State>() {
+		            public void changed(ObservableValue ov, State oldState, State newState) {
+		                if (newState == State.SUCCEEDED) {
+		                	urlField.setText(web.getEngine().getLocation());
+		                	String title = web.getEngine().getTitle();
+		                	if (title.length() > 10){
+		                		title = title.substring(0,9);
+		                	}
+		                	tab.setText(title);
+		                }
+		            }
+		        });
 		tab.setContent(web);
 		leftTabPane.getTabs().add(leftTabPane.getTabs().size()-1,tab);
 		leftTabPane.getSelectionModel().select(tab);
@@ -106,10 +122,22 @@ public class LayoutController implements Initializable {
 	}
 	@FXML
 	private void rightTabAddAction(Event event){
-		DraggableTab tab = new DraggableTab("new Tab");
-		tab.setText("new Tab");
+		DraggableTab tab = new DraggableTab("");
 		WebView web = new WebView();
 		web.getEngine().load("http://www.google.com");
+		web.getEngine().getLoadWorker().stateProperty().addListener(
+		        new ChangeListener<State>() {
+		            public void changed(ObservableValue ov, State oldState, State newState) {
+		                if (newState == State.SUCCEEDED) {
+		                	urlField.setText(web.getEngine().getLocation());
+		                	String title = web.getEngine().getTitle();
+		                	if (title.length() > 10){
+		                		title = title.substring(0,9);
+		                	}
+		                	tab.setText(title);
+		                }
+		            }
+		        });
 		tab.setContent(web);
 		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
 		rightTabPane.getSelectionModel().select(tab);
