@@ -1,7 +1,10 @@
 package application;
 
+import java.awt.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.sun.media.jfxmedia.events.NewFrameEvent;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -13,19 +16,18 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 
 public class LayoutController implements Initializable {
 	@FXML
 	private TextField urlField;
-	@FXML
-	private WebView leftWebview;
-	@FXML
-	private WebView rightWebview;
 	@FXML
 	private TabPane leftTabPane;
 	@FXML
@@ -34,10 +36,12 @@ public class LayoutController implements Initializable {
 	private TabPane rightTabPane;
 	@FXML
 	private Tab rightAddTab;
+	@FXML
+	private ListView<String> leftFavoritebar;
 	
 	private WebView lastClickWebview;
 	
-	 
+	
 	@FXML
 	private void setUrlAction(ActionEvent event) {
 		String url = urlField.getText();
@@ -98,10 +102,11 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void leftTabAddAction(Event event){
-		DraggableTab tab = new DraggableTab("");
+		Tab tab = new Tab("");
 		WebView web = new WebView();
 		//tab.setText("new Tab");
-		web.getEngine().load("http://www.google.com");
+		
+		//System.out.println(web.getEngine().getLocation());
 		web.getEngine().getLoadWorker().stateProperty().addListener(
 		        new ChangeListener<State>() {
 		            public void changed(ObservableValue ov, State oldState, State newState) {
@@ -115,6 +120,8 @@ public class LayoutController implements Initializable {
 		                }
 		            }
 		        });
+		web.getEngine().load("http://www.google.co.jp");
+		String title = web.getEngine().getTitle();
 		tab.setContent(web);
 		leftTabPane.getTabs().add(leftTabPane.getTabs().size()-1,tab);
 		leftTabPane.getSelectionModel().select(tab);
@@ -122,15 +129,18 @@ public class LayoutController implements Initializable {
 	}
 	@FXML
 	private void rightTabAddAction(Event event){
-		DraggableTab tab = new DraggableTab("");
+		Tab tab = new Tab();
 		WebView web = new WebView();
-		web.getEngine().load("http://www.google.com");
+		//tab.setText("new Tab");
+		//System.out.println(web.getEngine().getLocation());
+		
 		web.getEngine().getLoadWorker().stateProperty().addListener(
 		        new ChangeListener<State>() {
 		            public void changed(ObservableValue ov, State oldState, State newState) {
 		                if (newState == State.SUCCEEDED) {
 		                	urlField.setText(web.getEngine().getLocation());
 		                	String title = web.getEngine().getTitle();
+		                	
 		                	if (title.length() > 10){
 		                		title = title.substring(0,9);
 		                	}
@@ -138,6 +148,7 @@ public class LayoutController implements Initializable {
 		                }
 		            }
 		        });
+		web.getEngine().load("http://www.google.co.jp");
 		tab.setContent(web);
 		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
 		rightTabPane.getSelectionModel().select(tab);
@@ -151,6 +162,7 @@ public class LayoutController implements Initializable {
 		WebView node = (WebView)selecttab.getContent();
 		lastClickWebview = node;
 		String url = lastClickWebview.getEngine().getLocation();
+		System.out.print(url);
 		urlField.setText(url);
 	}
 	
@@ -159,17 +171,42 @@ public class LayoutController implements Initializable {
 		setUrlAction(event);
 	}
 	
+	@FXML
+	private void addPageLeft(ActionEvent event){
+		Tab selecttab = leftTabPane.getSelectionModel().getSelectedItem();
+		WebView view = (WebView)selecttab.getContent();
+		String url = view.getEngine().getLocation();
+		leftFavoritebar.getItems().add(url);
+		//System.out.println("add page");
+	}
+	
+	@FXML
+	private void leftbarClicked(MouseEvent event){
+		if(event.getButton().equals(MouseButton.SECONDARY) == false){
+			Tab selecttab = leftTabPane.getSelectionModel().getSelectedItem();
+			WebView view = (WebView)selecttab.getContent();
+			
+			if(leftFavoritebar.getItems().size() != 0) {
+				String url = leftFavoritebar.getSelectionModel().getSelectedItem();
+				view.getEngine().load(url);
+				leftFavoritebar.getSelectionModel().setSelectionMode(null);
+			}
+		}
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		leftTabPane.getTabs().remove(0);
-		rightTabPane.getTabs().remove(0);
+
+		//rightTabPane.getTabs().remove(0);
+		//leftTabPane.getTabs().remove(0);
 		//leftTabAddAction(null);
 		//rightTabAddAction(null);
-		lastClickWebview = rightWebview;
-		
+		//lastClickWebview =	rightWebview;
 		System.setProperty("http.proxyHost","proxy.salesio-sp.ac.jp");
 	    System.setProperty("http.proxyPort", "7080");
-		
+	    
+
+	    
 	}
 }
