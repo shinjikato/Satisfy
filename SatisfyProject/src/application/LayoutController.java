@@ -1,12 +1,10 @@
 package application;
 
-import java.awt.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import com.sun.media.jfxmedia.events.NewFrameEvent;
-
+import javafx.util.Duration;
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -15,8 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -38,9 +36,12 @@ public class LayoutController implements Initializable {
 	private Tab rightAddTab;
 	@FXML
 	private ListView<String> leftFavoritebar;
+	@FXML
+	private SplitPane splitPane;
+	
+	boolean isLeftPane,isRightPane;
 	
 	private WebView lastClickWebview;
-	
 	
 	@FXML
 	private void setUrlAction(ActionEvent event) {
@@ -58,12 +59,9 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void backButtonAction(ActionEvent event){
-		//�o�b�N�{�^���̃��\�b�h
 		WebHistory history = lastClickWebview.getEngine().getHistory();
 		ObservableList<WebHistory.Entry> entryList=history.getEntries();
 	    int currentIndex=history.getCurrentIndex();
-//	    Out("currentIndex = "+currentIndex);
-//	    Out(entryList.toString().replace("],","]\n"));
 
 	    Platform.runLater(new Runnable() { public void run() { history.go(-1); } });
 	    String url = entryList.get(currentIndex>0?currentIndex-1:currentIndex).getUrl();
@@ -72,12 +70,9 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void nextButtonAction(ActionEvent event){
-		//�i�ރ{�^���̃��\�b�h
 		final WebHistory history=lastClickWebview.getEngine().getHistory();
 	    ObservableList<WebHistory.Entry> entryList=history.getEntries();
 	    int currentIndex=history.getCurrentIndex();
-//	    Out("currentIndex = "+currentIndex);
-//	    Out(entryList.toString().replace("],","]\n"));
 
 	    Platform.runLater(new Runnable() { public void run() { history.go(1); } });
 	    String url = entryList.get(currentIndex<entryList.size()-1?currentIndex+1:currentIndex).getUrl();
@@ -86,18 +81,46 @@ public class LayoutController implements Initializable {
 	
 	@FXML
 	private void reloadButtonAction(ActionEvent event){
-		//�X�V�{�^��
 		lastClickWebview.getEngine().reload();
 	}
 	
 	@FXML
 	private void leftDivideAction(ActionEvent event){
-		//���ɕ�����̃{�^��
+		DoubleProperty dprop = splitPane.getDividers().get(0).positionProperty();
+		DoubleTransition dt = new DoubleTransition(Duration.millis(500), dprop);	
+		if(isLeftPane == false && isRightPane == false){
+			dt.setToValue(1);
+			dt.play();
+			//splitPane.setDividerPositions(1.0,0.0);
+			isLeftPane = true;
+		}
+		else if((isLeftPane == true && isRightPane == false) || (isLeftPane == false && isRightPane == true)){
+			dt.setToValue(.5);
+			dt.play();
+			//splitPane.setDividerPositions(0.5,0.5);
+			isLeftPane = false;
+			isRightPane = false;
+		}
 	}
 	
 	@FXML
 	private void rightDivideAction(ActionEvent event){
-		//�E�ɕ�����{�^��
+		DoubleProperty dprop = splitPane.getDividers().get(0).positionProperty();
+		DoubleTransition dt = new DoubleTransition(Duration.millis(500), dprop);	
+		if(isLeftPane == false && isRightPane == false){
+			dt.setToValue(0);
+			dt.play();
+			//splitPane.setDividerPositions(0.0,1.0);
+			isRightPane = true;
+		}
+		else if((isLeftPane == true && isRightPane == false) || (isLeftPane == false && isRightPane == true)){
+			dt.setToValue(.5);
+			dt.play();
+			//splitPane.setDividerPositions(0.5,0.5);
+			isLeftPane = false;
+			isRightPane = false;
+		}
+		
 	}
 	
 	@FXML
@@ -106,7 +129,6 @@ public class LayoutController implements Initializable {
 		WebView web = new WebView();
 		//tab.setText("new Tab");
 		
-		//System.out.println(web.getEngine().getLocation());
 		web.getEngine().getLoadWorker().stateProperty().addListener(
 		        new ChangeListener<State>() {
 		            public void changed(ObservableValue ov, State oldState, State newState) {
@@ -121,7 +143,6 @@ public class LayoutController implements Initializable {
 		            }
 		        });
 		web.getEngine().load("http://www.google.co.jp");
-		String title = web.getEngine().getTitle();
 		tab.setContent(web);
 		leftTabPane.getTabs().add(leftTabPane.getTabs().size()-1,tab);
 		leftTabPane.getSelectionModel().select(tab);
@@ -176,6 +197,7 @@ public class LayoutController implements Initializable {
 		Tab selecttab = leftTabPane.getSelectionModel().getSelectedItem();
 		WebView view = (WebView)selecttab.getContent();
 		String url = view.getEngine().getLocation();
+		
 		leftFavoritebar.getItems().add(url);
 		//System.out.println("add page");
 	}
@@ -197,7 +219,8 @@ public class LayoutController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-
+		isLeftPane = isRightPane = false;
+		splitPane.setDividerPositions(0.5,0.5);
 		//rightTabPane.getTabs().remove(0);
 		//leftTabPane.getTabs().remove(0);
 		//leftTabAddAction(null);
