@@ -41,7 +41,7 @@ public class DoubleTransition extends Transition {
 	    return duration;
 	}
 	
-	 DoubleProperty getDoubleProperty()  { return _dp; }
+	 DoubleProperty getDoubleProperty()  { return _dp; } 
 	
 	
 	protected void setDoubleProperty(DoubleProperty aDP)  { _dp = aDP; }
