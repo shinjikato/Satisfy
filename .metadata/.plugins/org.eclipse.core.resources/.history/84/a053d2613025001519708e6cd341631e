@@ -43,9 +43,6 @@ public class CostomWebView {
 		                		System.out.println("When tab's title set webTitle, webTitle is null " + ne);
 		                	}
 		                }
-		                else if(newState == State.FAILED){
-		                	System.out.println("FAILED");
-		                }
 		            }
 		        });
 		web.getEngine().locationProperty().addListener(new ChangeListener<String>(){

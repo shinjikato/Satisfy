@@ -43,9 +43,6 @@ public class CostomWebView {
 		                		System.out.println("When tab's title set webTitle, webTitle is null " + ne);
 		                	}
 		                }
-		                else if(newState == State.FAILED){
-		                	System.out.println("FAILED");
-		                }
 		            }
 		        });
 		web.getEngine().locationProperty().addListener(new ChangeListener<String>(){
@@ -72,9 +69,6 @@ public class CostomWebView {
 					System.out.println("newLoc " + newLoc);
 					chooser.setTitle("save" + newLoc);
 					chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(downloadEnd.substring(1,downloadEnd.length()) +" flie", downloadEnd));
-					
-					File userDirectory = new File(System.getProperty("user.home"));
-					chooser.setInitialDirectory(userDirectory);
 					
 					int fileNameIdx = newLoc.lastIndexOf("/")+1;
 					if(fileNameIdx != 0){

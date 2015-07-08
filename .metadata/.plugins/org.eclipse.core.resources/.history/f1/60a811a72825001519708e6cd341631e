@@ -207,8 +207,6 @@ public class LayoutController implements Initializable {
 		// TODO Auto-generated method stub
 		isLeftPane = isRightPane = false;
 		splitPane.setDividerPositions(0.5,0.5);
-		System.setProperty("http.proxyHost", "proxy.salesio-sp.ac.jp");
-		System.setProperty("http.proxyPort", "7080");
 		//rightTabPane.getTabs().remove(0);
 		//leftTabPane.getTabs().remove(0);
 		//leftTabAddAction(null);

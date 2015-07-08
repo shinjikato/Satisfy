@@ -43,9 +43,6 @@ public class CostomWebView {
 		                		System.out.println("When tab's title set webTitle, webTitle is null " + ne);
 		                	}
 		                }
-		                else if(newState == State.FAILED){
-		                	System.out.println("FAILED");
-		                }
 		            }
 		        });
 		web.getEngine().locationProperty().addListener(new ChangeListener<String>(){
@@ -54,11 +51,11 @@ public class CostomWebView {
 				// TODO Auto-generated method stub
 				String downloadEnd = null;
 				String[] downloadEnds = {".doc",".xls",".zip",".tgz",".jar",".exe",".lzh"};
-				String[] url_split;
+				String[] tmp;
 				String url_end;
 				
-				url_split = newLoc.split("/",0);
-				url_end = url_split[url_split.length-1];
+				tmp = newLoc.split("/",0);
+				url_end = tmp[tmp.length-1];
 				
 				for (String end : downloadEnds){
 					if(url_end.indexOf(end) != -1){
@@ -71,10 +68,7 @@ public class CostomWebView {
 					FileChooser chooser = new FileChooser();
 					System.out.println("newLoc " + newLoc);
 					chooser.setTitle("save" + newLoc);
-					chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(downloadEnd.substring(1,downloadEnd.length()) +" flie", downloadEnd));
-					
-					File userDirectory = new File(System.getProperty("user.home"));
-					chooser.setInitialDirectory(userDirectory);
+					chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("newFile", downloadEnd));
 					
 					int fileNameIdx = newLoc.lastIndexOf("/")+1;
 					if(fileNameIdx != 0){
