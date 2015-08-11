@@ -16,7 +16,7 @@
                <graphic>
                   <ImageView fitHeight="13.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resource/button_icon/back.png" />
+                        <Image url="@resource/button_icon/back.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -24,7 +24,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resource/button_icon/next.png" />
+                        <Image url="@resource/button_icon/next.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -32,7 +32,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resource/button_icon/reload.png" />
+                        <Image url="@resource/button_icon/reload.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -42,7 +42,7 @@
        </HBox>
        <SplitMenuButton mnemonicParsing="false" onAction="#setUrlAction" prefHeight="26.0" prefWidth="28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-           <MenuItem mnemonicParsing="false" text="Action 1" />
+           <MenuItem mnemonicParsing="false" text="履歴" onAction="#historyView" />
            <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
        </SplitMenuButton>

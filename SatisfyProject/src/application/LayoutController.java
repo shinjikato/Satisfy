@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.glass.ui.View;
 
 import javafx.util.Duration;
 import javafx.application.Platform;
@@ -19,6 +20,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
@@ -200,7 +202,23 @@ public class LayoutController implements Initializable {
 			}
 		}
 	}
-	
+	@FXML
+	public void historyView(Event event){
+		Tab tab = new Tab();
+		//	rightTabPane
+		Pane historyPane = new Pane();
+		ListView<String> historyList = new ListView<String>();
+		for(int i=0;i<CostomWebView.webhistory.size();i++){
+			String str = CostomWebView.webhistory.get(i);
+			historyList.getItems().add(str);
+		}
+		
+		
+		tab.setContent(historyPane);
+		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
+		rightTabPane.getSelectionModel().select(tab);
+		
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -214,6 +232,8 @@ public class LayoutController implements Initializable {
 		//leftTabAddAction(null);
 		//rightTabAddAction(null);
 		//lastClickWebview =	rightWebview;
-	    
 	}
+	
+	
+	
 }

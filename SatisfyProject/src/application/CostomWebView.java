@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +18,7 @@ import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 import javafx.stage.FileChooser;
 public class CostomWebView {
+	static ArrayList<String> webhistory = new ArrayList<String>();
 	WebView web = new WebView();
 	TextField urlField;
 	Tab tab;
@@ -32,8 +34,10 @@ public class CostomWebView {
 		        new ChangeListener<State>() {
 		            public void changed(ObservableValue ov, State oldState, State newState) {
 		                if (newState == State.SUCCEEDED) {
+
 		                	urlField.setText(web.getEngine().getLocation());
 		                	String title = web.getEngine().getTitle();
+		                	webhistory.add(title + web.getEngine().getLocation());
 		                	try{
 			                	if (title.length() > 10){
 			                		title = title.substring(0,9);
