@@ -1,25 +1,34 @@
 package application;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
+import net.sf.image4j.codec.ico.ICODecoder;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker.State;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 import javafx.stage.FileChooser;
 public class CostomWebView {
 	static ArrayList<String> webhistory = new ArrayList<String>();
 	WebView web = new WebView();
+	ImageView iconView = null;
 	TextField urlField;
 	Tab tab;
 	String[] downloadEnds = {".doc",".xls",".zip",".tgz",".jar",".exe",".lzh"};
@@ -37,14 +46,19 @@ public class CostomWebView {
 
 		                	urlField.setText(web.getEngine().getLocation());
 		                	String title = web.getEngine().getTitle();
-		                	webhistory.add(title + web.getEngine().getLocation());
-		                	try{
-			                	if (title.length() > 10){
-			                		title = title.substring(0,9);
+		                	if( title != null){
+			                	webhistory.add(title + web.getEngine().getLocation());
+			                	try{
+				                	if (title.length() > 10){
+				                		title = title.substring(0,9);
+				                	}
+				                	tab.setText(title);
+				                	String fullURL = web.getEngine().getLocation();
+				                	iconView = new ImageView(getIconImage(toFaviURL(fullURL)));
+				                	tab.setGraphic(iconView);
+			                	}catch(NullPointerException ne){
+			                		System.out.println(title+"When tab's title set webTitle, webTitle is null " + ne );
 			                	}
-			                	tab.setText(title);
-		                	}catch(NullPointerException ne){
-		                		System.out.println("When tab's title set webTitle, webTitle is null " + ne);
 		                	}
 		                }
 		                else if(newState == State.FAILED){
@@ -112,6 +126,50 @@ public class CostomWebView {
 			
 		});
 	}
-	
+	public Image getIconImage(String url){
+		InputStream input = null;
+		try {
+			System.out.println("test2");
+			URL favURL = new URL(url);
+			input = favURL.openStream();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (input == null){
+			System.out.println("test3");
+			input = getClass().getResourceAsStream("icon.png");
+		}
+		
+		if (input != null){
+			System.out.println("test4");
+			try {
+				BufferedImage img = null;
+				List<BufferedImage> imgs = ICODecoder.read(input);
+				img = imgs != null ? imgs.size() > 0 ? imgs.get(0) : null : null;
+				WritableImage imfx = SwingFXUtils.toFXImage(img, null);
+				return imfx;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else{
+			System.out.println("test5");
+			return null;
+		}
+		return null;
+		
+		
+	}
+	public String toFaviURL(String url){
+		int s = url.indexOf(":")+3;
+		int e = url.indexOf("/",s);
+		String faviURL = url.substring(0,e) + "/favicon.ico";
+		return faviURL;
+	}
 
 }
