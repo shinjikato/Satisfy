@@ -15,15 +15,20 @@ import  java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import net.sf.image4j.codec.ico.ICODecoder;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
@@ -203,12 +208,13 @@ public class LayoutController implements Initializable {
 	private void addPageLeft(ActionEvent event){
 		Tab selecttab = leftTabPane.getSelectionModel().getSelectedItem();
 		WebView view = (WebView)selecttab.getContent();
+		ImageView im = (ImageView) selecttab.getGraphic();
 		String url = view.getEngine().getLocation();
 		
 		leftFavoritebar.getItems().add(url);
 		//System.out.println("add page");
 	}
-	
+	/*
 	@FXML
 	private void leftbarClicked(MouseEvent event){
 		if(event.getButton().equals(MouseButton.SECONDARY) == false){
@@ -217,11 +223,15 @@ public class LayoutController implements Initializable {
 			
 			if(leftFavoritebar.getItems().size() != 0) {
 				String url = leftFavoritebar.getSelectionModel().getSelectedItem();
-				view.getEngine().load(url);
-				leftFavoritebar.getSelectionModel().setSelectionMode(null);
+				//leftFavoritebar.getSelectionModel().getSelectedItems();
+				//System.out.println(leftFavoritebar.getSelectionModel().get);
+				if(url != null){
+					view.getEngine().load(url);
+					leftFavoritebar.getSelectionModel().setSelectionMode(null);
+				}
 			}
 		}
-	}
+	}*/
 	@FXML
 	public void historyView(Event event){
 		Tab tab = new Tab();
@@ -248,6 +258,28 @@ public class LayoutController implements Initializable {
 		splitPane.setDividerPositions(0.5,0.5);
 		System.setProperty("http.proxyHost", "proxy.salesio-sp.ac.jp");
 		System.setProperty("http.proxyPort", "7080");
+		
+		leftFavoritebar.setCellFactory(new Callback<ListView<String>, 
+			ListCell<String>>() {
+	            @Override 
+	            public ListCell<String> call(ListView<String> list) {
+	                return new ListViewItem();
+	            }
+        	}
+		);;
+		System.out.println("set clicked");
+		ObservableList<String> data = FXCollections.observableArrayList("https://www.google.co.jp/");
+
+		leftFavoritebar.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<String>() {
+                    public void changed(ObservableValue<? extends String> ov, 
+                        String old_val, String new_val) {
+                    	System.out.println("test"+new_val);
+                            //label.setText(new_val);
+                            //label.setTextFill(Color.web(new_val));
+                }
+            });
+		//leftFavoritebar.setItems(data);
 		//rightTabPane.getTabs().remove(0);
 		//leftTabPane.getTabs().remove(0);
 		//leftTabAddAction(null);

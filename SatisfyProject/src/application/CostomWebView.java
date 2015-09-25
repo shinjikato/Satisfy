@@ -128,9 +128,10 @@ public class CostomWebView {
 		});
 	}
 	public Image getIconImage(String url){
+		//url = "http://www.google.com/s2/favicons?domain=www.yahoo.co.jp";
 		InputStream input = null;
 		try {
-			System.out.println("test2");
+			//System.out.println("test2");
 			URL favURL = new URL(url);
 			input = favURL.openStream();
 		} catch (MalformedURLException e) {
@@ -141,12 +142,12 @@ public class CostomWebView {
 			e.printStackTrace();
 		}
 		if (input == null){
-			System.out.println("test3");
+			//System.out.println("test3");
 			input = getClass().getResourceAsStream("default.ico");
 		}
 		
 		if (input != null){
-			System.out.println("test4");
+			//System.out.println("test4");
 			try {
 				BufferedImage img = null;
 				List<BufferedImage> imgs = ICODecoder.read(input);
@@ -162,7 +163,7 @@ public class CostomWebView {
 			}
 			
 		}else{
-			System.out.println("test5");
+			//System.out.println("test5");
 			return null;
 		}
 		return null;

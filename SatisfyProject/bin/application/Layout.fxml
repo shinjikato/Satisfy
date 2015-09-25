@@ -42,7 +42,7 @@
        </HBox>
        <SplitMenuButton mnemonicParsing="false" onAction="#setUrlAction" prefHeight="26.0" prefWidth="28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-           <MenuItem mnemonicParsing="false" text="履歴" onAction="#historyView" />
+           <MenuItem mnemonicParsing="false" onAction="#historyView" text="履歴" />
            <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
        </SplitMenuButton>
@@ -53,7 +53,7 @@
                 <children>
                    <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ListView fx:id="leftFavoritebar" onMouseClicked="#leftbarClicked" prefHeight="1047.0" prefWidth="40.0">
+                        <ListView fx:id="leftFavoritebar" prefHeight="1047.0" prefWidth="40.0">
                            <contextMenu>
                               <ContextMenu>
                                 <items>

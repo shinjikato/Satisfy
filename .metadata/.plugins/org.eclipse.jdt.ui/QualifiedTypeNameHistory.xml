@@ -20,4 +20,9 @@
 <fullyQualifiedTypeName name="javafx.scene.layout.Pane"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.awt.Graphics2D"/>
+<fullyQualifiedTypeName name="javafx.util.Callback"/>
+<fullyQualifiedTypeName name="javafx.scene.control.ListCell"/>
+<fullyQualifiedTypeName name="javafx.beans.value.ChangeListener"/>
+<fullyQualifiedTypeName name="javafx.beans.value.ObservableValue"/>
+<fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
 </qualifiedTypeNameHistroy>
