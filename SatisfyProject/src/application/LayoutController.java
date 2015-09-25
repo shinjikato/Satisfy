@@ -175,7 +175,8 @@ public class LayoutController implements Initializable {
 		//ImageView imageview = new ImageView(getIconImage("http://www.google.co.jp/favicon.ico"));
 		web.web.getEngine().load("http://www.google.co.jp");
 		tab.setContent(web.web);
-		//tab.setGraphic(imageview);
+		//web.iconView.fitHeightProperty().bind(rightTabPane.getTabMaxHeight());
+		//tab.setGraphic(web.iconView);
 		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
 		rightTabPane.getSelectionModel().select(tab);
 		lastClickWebview = (WebView)tab.getContent();
@@ -254,50 +255,6 @@ public class LayoutController implements Initializable {
 		//lastClickWebview =	rightWebview;
 	}
 	
-	public String toURLroot(String url){
-		int s = url.indexOf(":")+3;
-		int e = url.indexOf("/",s);
-		return url.substring(0,e);
-	}
-	
-	public Image getIconImage(String url){
-		InputStream input = null;
-		try {
-			System.out.println("test2");
-			URL favURL = new URL(url);
-			input = favURL.openStream();
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (input == null){
-			System.out.println("test3");
-			input = getClass().getResourceAsStream("icon.png");
-		}
-		
-		if (input != null){
-			System.out.println("test4");
-			try {
-				BufferedImage img = null;
-				List<BufferedImage> imgs = ICODecoder.read(input);
-				img = imgs != null ? imgs.size() > 0 ? imgs.get(0) : null : null;
-				WritableImage imfx = SwingFXUtils.toFXImage(img, null);
-				return imfx;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}else{
-			System.out.println("test5");
-			return null;
-		}
-		return null;
-		
-		
-	}
+
 	
 }
