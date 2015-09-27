@@ -11,7 +11,6 @@ import java.util.List;
 import net.sf.image4j.codec.ico.ICODecoder;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -25,7 +24,6 @@ public class ListViewItem extends ListCell<String>{
 	    	ImageView iconView = new ImageView(getIconImage(toFaviURL(item)));
 	    	Tooltip tip = new Tooltip(item);
 	    	setGraphic(iconView);
-	    	setTooltip(tip);
     	}
     }
 	public Image getIconImage(String url){

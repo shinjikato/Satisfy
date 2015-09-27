@@ -53,7 +53,7 @@
                 <children>
                    <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ListView fx:id="leftFavoritebar" prefHeight="1047.0" prefWidth="40.0">
+                        <ListView fx:id="leftFavoritebar" onMouseClicked="#leftbarClicked" prefHeight="1047.0" prefWidth="40.0">
                            <contextMenu>
                               <ContextMenu>
                                 <items>
@@ -85,7 +85,17 @@
                         </Tab>
                       </tabs>
                    </TabPane>
-                   <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                   <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ListView fx:id="rightFavoritebar" onMouseClicked="#rightbarClicked" prefHeight="1081.0" prefWidth="40.0">
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#addPageRight" text="AddPage" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu></ListView>
+                     </children></VBox>
                 </children>
              </AnchorPane>
           </items>

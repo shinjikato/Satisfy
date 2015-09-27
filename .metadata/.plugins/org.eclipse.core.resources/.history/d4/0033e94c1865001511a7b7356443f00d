@@ -287,14 +287,6 @@ public class LayoutController implements Initializable {
 	            }
         	}
 		);;
-		rightFavoritebar.setCellFactory(new Callback<ListView<String>, 
-				ListCell<String>>() {
-		            @Override 
-		            public ListCell<String> call(ListView<String> list) {
-		                return new ListViewItem();
-		            }
-	        	}
-			);;
 		//leftFavoritebar.setItems(data);
 		//rightTabPane.getTabs().remove(0);
 		//leftTabPane.getTabs().remove(0);
