@@ -63,7 +63,7 @@ public class CostomWebView {
 		                	}
 		                }
 		                else if(newState == State.RUNNING){
-		    				tab.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("loading.gif"),16,16, false, false)));
+		    				tab.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("loading.gif"))));
 		                }
 		                else if(newState == State.FAILED){
 		    				BufferedImage img = null;
@@ -71,6 +71,7 @@ public class CostomWebView {
 							try {
 								imgs = ICODecoder.read(getClass().getResourceAsStream("default.ico"));
 							} catch (IOException e) {
+								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 		    				img = imgs != null ? imgs.size() > 0 ? imgs.get(0) : null : null;

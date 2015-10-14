@@ -71,6 +71,7 @@ public class CostomWebView {
 							try {
 								imgs = ICODecoder.read(getClass().getResourceAsStream("default.ico"));
 							} catch (IOException e) {
+								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 		    				img = imgs != null ? imgs.size() > 0 ? imgs.get(0) : null : null;
