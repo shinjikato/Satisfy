@@ -261,6 +261,7 @@ public class LayoutController implements Initializable {
 			String str = CostomWebView.webhistory.get(i);
 			historyList.getItems().add(str);
 		}
+		
 		tab.setContent(historyPane);
 		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
 		rightTabPane.getSelectionModel().select(tab);

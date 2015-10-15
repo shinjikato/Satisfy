@@ -43,10 +43,12 @@ public class LayoutController implements Initializable {
 	private ListView<String> leftFavoritebar;
 	@FXML
 	private ListView<String> rightFavoritebar;
+	
 	@FXML
 	private SplitPane splitPane;
 	
 	boolean isLeftPane,isRightPane;
+	
 	private WebView lastClickWebview;
 	
 	@FXML
@@ -60,25 +62,25 @@ public class LayoutController implements Initializable {
 				url = "http://www." + url;
 			}	
 		}
-		if(url.matches("^(https?|ftp)(:ﾂ･ﾂ･/ﾂ･ﾂ･ﾂ･/[-_.!~*ﾂ･ﾂ･'()a-zA-Z0-9;ﾂ･ﾂ･/?:ﾂ･ﾂ･@&=+ﾂ･ﾂ･$,%#]+)$")){
+		if(url.matches("^(https?|ftp)(:ﾂ･ﾂ･/ﾂ･ﾂ･ﾂ･/[-_.!~*ﾂ･ﾂ･'()a-zA-Z0-9;ﾂ･ﾂ･/?:ﾂ･ﾂ･@&=+ﾂ･ﾂ･$,%#]+)$")){//URL蛻､螳壼�ｦ逅�
 			System.out.println("true");
 		}else{
 			System.out.println("false");
 		}
-		urlField.setText(url);
-		lastClickWebview.getEngine().load(url);
+		urlField.setText(url);//URL繝舌�ｼ縺ｮ譁�蟄励ｒ譖ｴ譁ｰ
+		lastClickWebview.getEngine().load(url);//url縺ｮ蝣ｴ謇�縺ｸWebView繧貞虚縺九☆
 		
 	}
 	
 	@FXML
-	private void backButtonAction(ActionEvent event){
-		WebHistory history = lastClickWebview.getEngine().getHistory();
-		ObservableList<WebHistory.Entry> entryList=history.getEntries();
+	private void backButtonAction(ActionEvent event){//謌ｻ繧九�懊ち繝ｳ繧偵♀縺励◆譎ゅ�ｮ蜃ｦ逅�
+		WebHistory history = lastClickWebview.getEngine().getHistory();//螻･豁ｴ繧貞叙蠕�
+		ObservableList<WebHistory.Entry> entryList=history.getEntries();//
 	    int currentIndex = history.getCurrentIndex();
 
 	    Platform.runLater(new Runnable() { public void run() { history.go(-1); } });
-	    String url = entryList.get(currentIndex>0?currentIndex-1:currentIndex).getUrl();
-	    lastClickWebview.getEngine().load(url);
+	    String url = entryList.get(currentIndex>0?currentIndex-1:currentIndex).getUrl();//荳�蛟句燕縺ｮURL縺ｮ蜿門ｾ�
+	    lastClickWebview.getEngine().load(url);//縺昴ｌ縺ｮ繝ｭ繝ｼ繝�
 	}
 	
 	@FXML
@@ -261,6 +263,7 @@ public class LayoutController implements Initializable {
 			String str = CostomWebView.webhistory.get(i);
 			historyList.getItems().add(str);
 		}
+		
 		tab.setContent(historyPane);
 		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
 		rightTabPane.getSelectionModel().select(tab);
@@ -272,6 +275,7 @@ public class LayoutController implements Initializable {
 		splitPane.setDividerPositions(0.5,0.5);
 		System.setProperty("http.proxyHost", "proxy.salesio-sp.ac.jp");
 		System.setProperty("http.proxyPort", "7080");
+		
 		leftFavoritebar.setCellFactory(new Callback<ListView<String>, 
 			ListCell<String>>() {
 	            @Override 

@@ -26,11 +26,11 @@
 <fullyQualifiedTypeName name="javafx.beans.value.ObservableValue"/>
 <fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
 <fullyQualifiedTypeName name="javafx.scene.control.Tooltip"/>
-<fullyQualifiedTypeName name="javafx.geometry.Insets"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.AnchorPane"/>
 <fullyQualifiedTypeName name="javafx.animation.TranslateTransition"/>
 <fullyQualifiedTypeName name="javafx.animation.ScaleTransition"/>
 <fullyQualifiedTypeName name="javafx.animation.Timeline"/>
 <fullyQualifiedTypeName name="javafx.animation.KeyFrame"/>
 <fullyQualifiedTypeName name="javafx.animation.KeyValue"/>
+<fullyQualifiedTypeName name="javafx.geometry.Insets"/>
 </qualifiedTypeNameHistroy>

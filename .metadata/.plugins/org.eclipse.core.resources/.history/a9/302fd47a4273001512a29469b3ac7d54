@@ -261,6 +261,7 @@ public class LayoutController implements Initializable {
 			String str = CostomWebView.webhistory.get(i);
 			historyList.getItems().add(str);
 		}
+		
 		tab.setContent(historyPane);
 		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
 		rightTabPane.getSelectionModel().select(tab);
@@ -272,6 +273,7 @@ public class LayoutController implements Initializable {
 		splitPane.setDividerPositions(0.5,0.5);
 		System.setProperty("http.proxyHost", "proxy.salesio-sp.ac.jp");
 		System.setProperty("http.proxyPort", "7080");
+		
 		leftFavoritebar.setCellFactory(new Callback<ListView<String>, 
 			ListCell<String>>() {
 	            @Override 
