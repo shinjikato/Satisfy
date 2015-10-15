@@ -5,27 +5,15 @@
 .hbox{
 	
 }
-.split-menu-button{
+.splitMenuButton{
 	
 }
-.menu-item{
+.menuItem{
 	
 }
-.text-field{
+.textField{
 	
 }
-.split-pane{
-	
-}
-.tab-pane{
-	
-}
-.web-view{
-	
-}
-.list-view{
-	
-}
-.context-menuu{
+.splitPane{
 	
 }

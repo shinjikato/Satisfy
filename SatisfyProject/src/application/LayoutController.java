@@ -16,6 +16,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
@@ -48,6 +49,7 @@ public class LayoutController implements Initializable {
 	
 	boolean isLeftPane,isRightPane;
 	private WebView lastClickWebview;
+	Button btn;
 	
 	@FXML
 	private void setUrlAction(ActionEvent event) {

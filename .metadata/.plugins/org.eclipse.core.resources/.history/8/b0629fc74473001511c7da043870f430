@@ -8,24 +8,27 @@
 .split-menu-button{
 	
 }
-.menu-item{
+.menuItem{
 	
 }
-.text-field{
+.textField{
 	
 }
 .split-pane{
 	
 }
-.tab-pane{
+.tabPane{
 	
 }
-.web-view{
+.tab{
 	
 }
-.list-view{
+.webView{
 	
 }
-.context-menuu{
+.listView{
+	
+}
+.contextMenu{
 	
 }

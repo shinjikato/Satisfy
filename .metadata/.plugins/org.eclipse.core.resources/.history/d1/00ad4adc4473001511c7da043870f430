@@ -17,15 +17,18 @@
 .split-pane{
 	
 }
-.tab-pane{
+.tabPane{
 	
 }
-.web-view{
+.tab{
 	
 }
-.list-view{
+.webView{
 	
 }
-.context-menuu{
+.listView{
+	
+}
+.contextMenu{
 	
 }

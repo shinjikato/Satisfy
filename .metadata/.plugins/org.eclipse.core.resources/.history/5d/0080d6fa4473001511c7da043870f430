@@ -20,12 +20,15 @@
 .tab-pane{
 	
 }
-.web-view{
+.tab{
 	
 }
-.list-view{
+.webView{
 	
 }
-.context-menuu{
+.listView{
+	
+}
+.contextMenu{
 	
 }
