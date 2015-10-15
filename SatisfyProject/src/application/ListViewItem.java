@@ -22,10 +22,16 @@ public class ListViewItem extends ListCell<String>{
     	super.updateItem(item, empty);
     	//System.out.println(item);
     	if(item != null){
-	    	ImageView iconView = new ImageView(getIconImage(toFaviURL(item)));
-	    	Tooltip tip = new Tooltip(item);
-	    	setGraphic(iconView);
-	    	setTooltip(tip);
+    		String[] items = item.split(",");
+    		if(items.length == 2){
+	    		String url = items[0];
+	    		String title = items[1];
+		    	ImageView iconView = new ImageView(getIconImage(toFaviURL(url)));
+		    	Tooltip tip = new Tooltip(url);
+		    	setGraphic(iconView);
+		    	setText(title);
+		    	setTooltip(tip);
+    		}
     	}
     }
 	public Image getIconImage(String url){

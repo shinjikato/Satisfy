@@ -51,9 +51,21 @@
           <items>
              <AnchorPane>
                 <children>
-                   <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <ListView fx:id="leftFavoritebar" onMouseClicked="#leftbarClicked" prefHeight="1047.0" prefWidth="40.0">
+                  <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children> <!-- tabClosingPolicy="UNAVAILABLE" -->
+                         <TabPane fx:id="leftTabPane" onMouseClicked="#selectTabPane" tabClosingPolicy="ALL_TABS" StackPane.alignment="TOP_RIGHT">
+                           <tabs>
+                              <Tab fx:id="leftAddTab" closable="false" onSelectionChanged="#leftTabAddAction" text="+">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </Tab>
+                           </tabs>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                         </TabPane>
+                        <ListView fx:id="leftFavoritebar" maxWidth="-Infinity" onMouseClicked="#leftbarClicked" onMouseEntered="#leftbarOverMouse" onMouseExited="#leftbarOutMouse" prefHeight="1047.0" prefWidth="30.0" StackPane.alignment="TOP_LEFT">
                            <contextMenu>
                               <ContextMenu>
                                 <items>
@@ -62,40 +74,37 @@
                               </ContextMenu>
                            </contextMenu>
                         </ListView>
-                     </children></VBox> <!-- tabClosingPolicy="UNAVAILABLE" -->
-                   <TabPane fx:id="leftTabPane" onMouseClicked="#selectTabPane" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <tabs>
-                        <Tab fx:id="leftAddTab" closable="false" onSelectionChanged="#leftTabAddAction" text="+">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </content>
-                        </Tab>
-                     </tabs>
-                   </TabPane>
+                     </children>
+                  </StackPane>
                 </children>
              </AnchorPane>
              <AnchorPane prefHeight="361.0" prefWidth="301.0">
                 <children>
-                   <TabPane fx:id="rightTabPane" onMouseClicked="#selectTabPane" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
-                      <tabs>
-                        <Tab fx:id="rightAddTab" closable="false" onSelectionChanged="#rightTabAddAction" text="+">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                           </content>
-                        </Tab>
-                      </tabs>
-                   </TabPane>
-                   <VBox prefHeight="325.0" prefWidth="40.0" style="-fx-background-color: bbccff;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ListView fx:id="rightFavoritebar" onMouseClicked="#rightbarClicked" prefHeight="1081.0" prefWidth="40.0">
+                         <TabPane fx:id="rightTabPane" onMouseClicked="#selectTabPane" tabClosingPolicy="ALL_TABS" StackPane.alignment="TOP_RIGHT">
+                            <tabs>
+                              <Tab fx:id="rightAddTab" closable="false" onSelectionChanged="#rightTabAddAction" text="+">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                            </tabs>
+                           <padding>
+                              <Insets right="30.0" />
+                           </padding>
+                         </TabPane>
+                        <ListView fx:id="rightFavoritebar" maxWidth="-Infinity" onMouseClicked="#rightbarClicked" onMouseEntered="#rightbarOverMouse" onMouseExited="#rightbarOutMouse" prefHeight="1081.0" prefWidth="30.0" StackPane.alignment="TOP_RIGHT">
                            <contextMenu>
                               <ContextMenu>
                                 <items>
                                   <MenuItem mnemonicParsing="false" onAction="#addPageRight" text="AddPage" />
                                 </items>
                               </ContextMenu>
-                           </contextMenu></ListView>
-                     </children></VBox>
+                           </contextMenu>
+                        </ListView>
+                     </children>
+                  </StackPane>
                 </children>
              </AnchorPane>
           </items>

@@ -17,6 +17,11 @@ import javax.imageio.ImageIO;
 import net.sf.image4j.codec.ico.ICODecoder;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
@@ -28,6 +33,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
@@ -40,6 +46,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.web.WebHistory;
@@ -123,6 +130,7 @@ public class LayoutController implements Initializable {
 		DoubleProperty dprop = splitPane.getDividers().get(0).positionProperty();
 		DoubleTransition dt = new DoubleTransition(Duration.millis(500), dprop);	
 		if(isLeftPane == false && isRightPane == false){
+			//rightTabPane.setPadding(new Insets(0, 0, 0, 0));
 			dt.setToValue(1);
 			dt.play();
 			//splitPane.setDividerPositions(1.0,0.0);
@@ -210,9 +218,9 @@ public class LayoutController implements Initializable {
 		Tab selecttab = leftTabPane.getSelectionModel().getSelectedItem();
 		WebView view = (WebView)selecttab.getContent();
 		String url = view.getEngine().getLocation();
-		
-		leftFavoritebar.getItems().add(url);
-		rightFavoritebar.getItems().add(url);
+		String title = selecttab.getText();
+		leftFavoritebar.getItems().add(url+","+title);
+		rightFavoritebar.getItems().add(url+","+title);
 		//System.out.println("add page");
 	}
 	@FXML
@@ -220,8 +228,9 @@ public class LayoutController implements Initializable {
 		Tab selecttab = rightTabPane.getSelectionModel().getSelectedItem();
 		WebView view = (WebView)selecttab.getContent();
 		String url = view.getEngine().getLocation();
-		rightFavoritebar.getItems().add(url);
-		leftFavoritebar.getItems().add(url);
+		String title = selecttab.getText();
+		rightFavoritebar.getItems().add(url+","+title);
+		leftFavoritebar.getItems().add(url+","+title);
 		//System.out.println("add page");
 	}
 	@FXML
@@ -230,7 +239,8 @@ public class LayoutController implements Initializable {
 			Tab selecttab = rightTabPane.getSelectionModel().getSelectedItem();
 			WebView view = (WebView)selecttab.getContent();
 			if(rightFavoritebar.getItems().size() != 0) {
-				String url = rightFavoritebar.getSelectionModel().getSelectedItem();
+				String url_title = rightFavoritebar.getSelectionModel().getSelectedItem();
+				String url = url_title.split(",")[0];
 				if(url != null){
 					view.getEngine().load(url);
 					rightFavoritebar.getSelectionModel().setSelectionMode(null);
@@ -244,13 +254,45 @@ public class LayoutController implements Initializable {
 			Tab selecttab = leftTabPane.getSelectionModel().getSelectedItem();
 			WebView view = (WebView)selecttab.getContent();
 			if(leftFavoritebar.getItems().size() != 0) {
-				String url = leftFavoritebar.getSelectionModel().getSelectedItem();
+				String url_title = leftFavoritebar.getSelectionModel().getSelectedItem();
+				String url = url_title.split(",")[0];
 				if(url != null){
 					view.getEngine().load(url);
 					leftFavoritebar.getSelectionModel().setSelectionMode(null);
 				}
 			}
 		}
+	}
+	@FXML
+	private void rightbarOverMouse(MouseEvent event){
+		Timeline timeline = new Timeline();
+		KeyFrame start = new KeyFrame(Duration.ZERO,new KeyValue(rightFavoritebar.prefWidthProperty(),rightFavoritebar.getPrefWidth()));
+		KeyFrame end = new KeyFrame(new Duration(400),new KeyValue(rightFavoritebar.prefWidthProperty(),200));
+		timeline.getKeyFrames().addAll(start,end);
+		timeline.play();
+	}
+	@FXML
+	private void leftbarOverMouse(MouseEvent event){
+		Timeline timeline = new Timeline();
+		KeyFrame start = new KeyFrame(Duration.ZERO,new KeyValue(leftFavoritebar.prefWidthProperty(),leftFavoritebar.getPrefWidth()));
+		KeyFrame end = new KeyFrame(new Duration(400),new KeyValue(leftFavoritebar.prefWidthProperty(),200));
+		timeline.getKeyFrames().addAll(start,end);
+		timeline.play();
+	}
+	@FXML
+	private void rightbarOutMouse(MouseEvent event){		Timeline timeline = new Timeline();
+	KeyFrame start = new KeyFrame(Duration.ZERO,new KeyValue(rightFavoritebar.prefWidthProperty(),rightFavoritebar.getPrefWidth()));
+	KeyFrame end = new KeyFrame(new Duration(400),new KeyValue(rightFavoritebar.prefWidthProperty(),30));
+	timeline.getKeyFrames().addAll(start,end);
+	timeline.play();
+	}
+	@FXML
+	private void leftbarOutMouse(MouseEvent event){	
+		Timeline timeline = new Timeline();
+		KeyFrame start = new KeyFrame(Duration.ZERO,new KeyValue(leftFavoritebar.prefWidthProperty(),leftFavoritebar.getPrefWidth()));
+		KeyFrame end = new KeyFrame(new Duration(400),new KeyValue(leftFavoritebar.prefWidthProperty(),30));
+		timeline.getKeyFrames().addAll(start,end);
+		timeline.play();
 	}
 	@FXML
 	public void historyView(Event event){
