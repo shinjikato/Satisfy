@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -25,6 +27,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
@@ -255,17 +258,20 @@ public class LayoutController implements Initializable {
 		timeline.play();
 	}
 	@FXML
-	public void historyView(Event event){
-		Tab tab = new Tab();
-		Pane historyPane = new Pane();
-		ListView<String> historyList = new ListView<String>();
-		for(int i=0;i<CostomWebView.webhistory.size();i++){
-			String str = CostomWebView.webhistory.get(i);
-			historyList.getItems().add(str);
+	public void onCreateSettingPane(Event e){
+		AnchorPane setting;
+		try {
+			setting = (AnchorPane)FXMLLoader.load(getClass().getResource("setting.fxml"));
+			setting.getStylesheets().add(getClass().getResource("setting.css").toExternalForm());
+			Tab tab = new Tab();
+			tab.setContent(setting);
+			rightTabPane.getTabs().add(rightTabPane.getTabs().size() -1 ,tab);
+			rightTabPane.getSelectionModel().select(tab);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		tab.setContent(historyPane);
-		rightTabPane.getTabs().add(rightTabPane.getTabs().size()-1,tab);
-		rightTabPane.getSelectionModel().select(tab);
+		
 	}
 	
 	@Override

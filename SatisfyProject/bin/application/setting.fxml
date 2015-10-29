@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SettingController">
+   <children>
+      <TabPane prefHeight="200.0" prefWidth="200.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="基本設定">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox fx:id="check_useProxy" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#onProxyUse" selected="true" text="Use Proxy" />
+                        <Label layoutX="29.0" layoutY="82.0" text="Host" />
+                        <Label layoutX="200.0" layoutY="82.0" text="Port" />
+                        <TextField fx:id="text_proxyHost" layoutX="29.0" layoutY="99.0" />
+                        <TextField fx:id="text_proxyPort" layoutX="200.0" layoutY="99.0" prefHeight="27.0" prefWidth="58.0" />
+                        <Button fx:id="button_proxySet" layoutX="265.0" layoutY="99.0" mnemonicParsing="false" onAction="#setProxy" text="Set" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="履歴">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="listView_webHistory" layoutX="22.0" layoutY="57.0" prefHeight="531.0" prefWidth="324.0" />
+                        <Label layoutX="30.0" layoutY="26.0" text="Web History" />
+                        <Button layoutX="278.0" layoutY="21.0" mnemonicParsing="false" onAction="#onRemoveWebHisotry" text="Remove" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="ダウンロード">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="listView_webDownloadHistory" layoutX="22.0" layoutY="60.0" prefHeight="528.0" prefWidth="321.0" />
+                        <Label layoutX="22.0" layoutY="26.0" text="DownLoad History" />
+                        <Button layoutX="275.0" layoutY="21.0" mnemonicParsing="false" onAction="#onRemoveWebDownloadHistory" text="Remove" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Satisfy">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

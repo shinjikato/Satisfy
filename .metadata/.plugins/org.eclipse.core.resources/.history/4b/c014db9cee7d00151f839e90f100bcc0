@@ -1,0 +1,29 @@
+package application;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+
+public class SettingController implements Initializable {
+	@FXML
+	TextField text_proxyHost;
+	@FXML
+	TextField text_proxyPort;
+	
+	public void onProxyUse(Event e){
+		
+	}
+	public void setProxy(Event e){
+		
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+}

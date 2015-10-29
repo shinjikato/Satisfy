@@ -46,6 +46,7 @@ public class CostomWebView {
 
 		                	urlField.setText(web.getEngine().getLocation());
 		                	String title = web.getEngine().getTitle();
+		                	SettingController.webHistory.add(title+" : "+web.getEngine().getLocation());
 		                	if( title != null){
 			                	webhistory.add(title + web.getEngine().getLocation());
 			                	try{
@@ -122,6 +123,7 @@ public class CostomWebView {
 									outStream.write(tmp);
 									tmp = inStream.read();
 								}
+								SettingController.webDownloadHistory.add(newLoc);
 							}catch(FileNotFoundException e){
 								System.out.println("Can't save file" + e);
 							}catch(MalformedURLException e){

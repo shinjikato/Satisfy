@@ -42,8 +42,7 @@
        </HBox>
        <SplitMenuButton mnemonicParsing="false" onAction="#setUrlAction" prefHeight="26.0" prefWidth="28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-           <MenuItem mnemonicParsing="false" onAction="#historyView" text="履歴" />
-           <MenuItem mnemonicParsing="false" text="Action 2" />
+           <MenuItem mnemonicParsing="false" onAction="#onCreateSettingPane" text="設定" />
          </items>
        </SplitMenuButton>
        <TextField fx:id="urlField" depthTest="ENABLE" focusTraversable="false" layoutX="239.0" onAction="#textFiledEnterAction" prefHeight="26.0" prefWidth="546.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />

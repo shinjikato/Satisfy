@@ -1,0 +1,7 @@
+package application;
+
+import javafx.fxml.Initializable;
+
+public class SettingController implements Initializable { {
+
+}

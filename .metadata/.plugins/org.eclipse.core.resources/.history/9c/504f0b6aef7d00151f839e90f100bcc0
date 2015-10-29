@@ -1,0 +1,42 @@
+package application;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
+
+public class SettingController implements Initializable {
+	@FXML
+	TextField text_proxyHost;
+	@FXML
+	TextField text_proxyPort;
+	@FXML
+	CheckBox check_useProxy;
+	
+	public void onProxyUse(Event e){
+		if(check_useProxy.selectedProperty().get() == true){
+			text_proxyHost.editableProperty().set(true);
+			text_proxyPort.editableProperty().set(true);
+			text_proxyHost.setDisable(false);
+			text_proxyPort.setDisable(false);
+		}else{
+			text_proxyHost.editableProperty().set(false);
+			text_proxyPort.editableProperty().set(false);		
+			text_proxyHost.setDisable(true);
+			text_proxyPort.setDisable(true);
+		}
+	}
+	public void setProxy(Event e){
+		
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+}
