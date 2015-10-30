@@ -57,21 +57,24 @@ public class LayoutController implements Initializable {
 	@FXML
 	private void setUrlAction(ActionEvent event) {
 		String url = urlField.getText();
-		
-		if(url.substring(0,7).equals("http://") == false && url.substring(0,8).equals("https://") == false){
-			if(url.substring(0,3).equals("www")){
-				url = "http://" + url;
-			}else{
-				url = "http://www." + url;
-			}	
-		}
 		if(url.matches("^(https?|ftp)(:ﾂ･ﾂ･/ﾂ･ﾂ･ﾂ･/[-_.!~*ﾂ･ﾂ･'()a-zA-Z0-9;ﾂ･ﾂ･/?:ﾂ･ﾂ･@&=+ﾂ･ﾂ･$,%#]+)$")){
-			System.out.println("true");
+			System.out.println("this is url true");
+			if(url.substring(0,7).equals("http://") == false && url.substring(0,8).equals("https://") == false){
+				if(url.substring(0,3).equals("www")){
+					url = "http://" + url;
+				}else{
+					url = "http://www." + url;
+				}	
+			}
+			urlField.setText(url);
+			lastClickWebview.getEngine().load(url);
 		}else{
-			System.out.println("false");
-		}
-		urlField.setText(url);
-		lastClickWebview.getEngine().load(url);
+			System.out.println("this is not url false");
+			url = SettingController.urlEngine+url;
+			urlField.setText(url);
+			lastClickWebview.getEngine().load(url);
+		}		
+
 		
 	}
 	
@@ -263,7 +266,7 @@ public class LayoutController implements Initializable {
 		try {
 			setting = (AnchorPane)FXMLLoader.load(getClass().getResource("setting.fxml"));
 			setting.getStylesheets().add(getClass().getResource("setting.css").toExternalForm());
-			Tab tab = new Tab();
+			Tab tab = new Tab("Setting");
 			tab.setContent(setting);
 			rightTabPane.getTabs().add(rightTabPane.getTabs().size() -1 ,tab);
 			rightTabPane.getSelectionModel().select(tab);

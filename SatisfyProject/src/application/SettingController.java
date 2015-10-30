@@ -22,7 +22,6 @@ public class SettingController implements Initializable {
 	CheckBox check_useProxy;
 	@FXML
 	Button button_proxySet;
-	
 	@FXML
 	ListView<String> listView_webHistory;
 	@FXML
@@ -30,6 +29,8 @@ public class SettingController implements Initializable {
 	
 	static ObservableList<String> webHistory = FXCollections.observableArrayList();
 	static ObservableList<String> webDownloadHistory = FXCollections.observableArrayList();
+
+	static String urlEngine = "https://www.google.co.jp/#safe=off&q=";//google
 	
 	public void onProxyUse(Event e){
 		if(check_useProxy.selectedProperty().get() == true){
@@ -68,6 +69,5 @@ public class SettingController implements Initializable {
 		// TODO Auto-generated method stub
 		listView_webHistory.setItems(webHistory);
 		listView_webDownloadHistory.setItems(webDownloadHistory);
-		
 	}
 }
