@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LayoutController">
    <children>
-       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: bbaacc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
              <Button mnemonicParsing="false" onAction="#backButtonAction" prefHeight="21.0" prefWidth="30.0">
                <graphic>
@@ -46,7 +46,7 @@
          </items>
        </SplitMenuButton>
        <TextField fx:id="urlField" depthTest="ENABLE" focusTraversable="false" layoutX="239.0" onAction="#textFiledEnterAction" prefHeight="26.0" prefWidth="546.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
-       <SplitPane fx:id="splitPane" dividerPositions="0.5" prefHeight="370.0" prefWidth="517.0" style="-fx-background-color: aabbcc;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+       <SplitPane fx:id="splitPane" dividerPositions="0.5" prefHeight="370.0" prefWidth="517.0" style="-fx-background-color: ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
           <items>
              <AnchorPane>
                 <children>

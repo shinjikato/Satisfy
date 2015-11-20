@@ -32,6 +32,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 
+
 public class LayoutController implements Initializable {
 	@FXML
 	private TextField urlField;
@@ -170,8 +171,10 @@ public class LayoutController implements Initializable {
 	private void selectTabPane(Event event){
 		TabPane tabPane = (TabPane)event.getSource();
 		Tab selecttab = tabPane.getSelectionModel().getSelectedItem();
+		
 		WebView node = (WebView)selecttab.getContent();
 		lastClickWebview = node;
+		
 		String url = lastClickWebview.getEngine().getLocation();
 		urlField.setText(url);
 	}

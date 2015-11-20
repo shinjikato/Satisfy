@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.fxml.FXMLLoader;
 
+import com.guigarage.flatterfx.*;
 public class Main extends Application {
 	
 	@Override
@@ -16,10 +17,9 @@ public class Main extends Application {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Layout.fxml"));
 			Scene scene = new Scene(root,1920,1080);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
+			//FlatterFX.style();
 			
 		} catch(Exception e) {
 			e.printStackTrace();

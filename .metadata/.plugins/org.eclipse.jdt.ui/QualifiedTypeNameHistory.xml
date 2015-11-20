@@ -40,4 +40,5 @@
 <fullyQualifiedTypeName name="javafx.scene.control.ListView"/>
 <fullyQualifiedTypeName name="javafx.collections.ObservableList"/>
 <fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
+<fullyQualifiedTypeName name="com.guigarage.flatterfx.FlatterFX"/>
 </qualifiedTypeNameHistroy>
