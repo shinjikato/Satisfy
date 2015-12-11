@@ -12,12 +12,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import net.sf.image4j.codec.ico.ICODecoder;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.concurrent.Worker.State;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -27,7 +30,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 public class CostomWebView {
 	static ArrayList<String> webhistory = new ArrayList<String>();
-	WebView web = new WebView();
+	WebView web;
 	ImageView iconView = null;
 	TextField urlField;
 	Tab tab;
@@ -36,7 +39,19 @@ public class CostomWebView {
 	CostomWebView(Tab t, TextField tf){
 		tab = t;
 		urlField = tf;
+		web = new WebView();
+		web.getStylesheets().add(getClass().getResource("webView.css").toExternalForm());
 		AddListeners();
+
+		/*web.getChildrenUnmodifiable().addListener(new ListChangeListener<Node>(){
+			@Override
+			public void onChanged(	javafx.collections.ListChangeListener.Change<? extends Node> c) {
+				Set<Node > deadSeaScrolls = web.lookupAll(".scroll-bar");
+				for(Node scroll : deadSeaScrolls){
+					scroll.setVisible(false);
+				}
+			}
+		});*/
 	}
 	void AddListeners(){
 		web.getEngine().getLoadWorker().stateProperty().addListener(

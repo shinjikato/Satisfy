@@ -1,0 +1,11 @@
+.web-view .increment-button ,.web-view .decrement-button{
+	-fx-background-color:transparent;
+	-fx-backgroumd-color:radius:2em;
+}
+
+.web-view .scroll-bar:vertical .tack{
+	-fx-background-color : #ffffff;
+}
+.web-view .scroll-bar:vertical .thumb{
+	-fx-background-color : #ffffff;
+}

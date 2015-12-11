@@ -1,0 +1,3 @@
+.web-view .scroll-bar:vertical .tack{
+	-fx-backgrond-color : white;
+}

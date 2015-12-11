@@ -14,30 +14,44 @@
           <children>
              <Button mnemonicParsing="false" onAction="#backButtonAction" prefHeight="21.0" prefWidth="30.0">
                <graphic>
-                  <ImageView fitHeight="13.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="23.0">
                      <image>
-                        <Image url="@resource/button_icon/back.png" />
+                        <Image url="@icon/back.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
              <Button mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="26.0" prefWidth="35.0">
                <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="23.0">
                      <image>
-                        <Image url="@resource/button_icon/next.png" />
+                        <Image url="@icon/next.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
              <Button mnemonicParsing="false" onAction="#reloadButtonAction" prefHeight="26.0" prefWidth="28.0">
                <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="23.0">
                      <image>
-                        <Image url="@resource/button_icon/reload.png" />
+                        <Image url="@icon/reload.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
-             <Button mnemonicParsing="false" onAction="#leftDivideAction" prefHeight="26.0" prefWidth="28.0" />
-             <Button mnemonicParsing="false" onAction="#rightDivideAction" prefHeight="26.0" prefWidth="28.0" />
+             <Button mnemonicParsing="false" onAction="#leftDivideAction" prefHeight="26.0" prefWidth="28.0">
+               <graphic>
+                  <ImageView fx:id="leftDivideImg" fitHeight="23.0" fitWidth="35.0">
+                     <image>
+                        <Image url="@icon/left_to_full.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+             <Button mnemonicParsing="false" onAction="#rightDivideAction" prefHeight="26.0" prefWidth="28.0">
+               <graphic>
+                  <ImageView fx:id="rightDivideImg" fitHeight="23.0" fitWidth="35.0">
+                     <image>
+                        <Image url="@icon/right_to_full.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
           </children>
        </HBox>
        <SplitMenuButton mnemonicParsing="false" onAction="#setUrlAction" prefHeight="26.0" prefWidth="28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

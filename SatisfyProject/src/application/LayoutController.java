@@ -25,6 +25,8 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -50,6 +52,10 @@ public class LayoutController implements Initializable {
 	private ListView<String> rightFavoritebar;
 	@FXML
 	private SplitPane splitPane;
+	@FXML
+	private ImageView leftDivideImg;
+	@FXML
+	private ImageView rightDivideImg;
 	
 	boolean isLeftPane,isRightPane;
 	private WebView lastClickWebview;
@@ -58,7 +64,8 @@ public class LayoutController implements Initializable {
 	@FXML
 	private void setUrlAction(ActionEvent event) {
 		String url = urlField.getText();
-		if(url.matches("^(https?|ftp)(:ﾂ･ﾂ･/ﾂ･ﾂ･ﾂ･/[-_.!~*ﾂ･ﾂ･'()a-zA-Z0-9;ﾂ･ﾂ･/?:ﾂ･ﾂ･@&=+ﾂ･ﾂ･$,%#]+)$")){
+		//if(url.matches("^(https?|ftp)(:ﾂ･ﾂ･/ﾂ･ﾂ･ﾂ･/[-_.!~*ﾂ･ﾂ･'()a-zA-Z0-9;ﾂ･ﾂ･/?:ﾂ･ﾂ･@&=+ﾂ･ﾂ･$,%#]+)$")){
+		if(url.matches(".*http.*")){
 			System.out.println("this is url true");
 			if(url.substring(0,7).equals("http://") == false && url.substring(0,8).equals("https://") == false){
 				if(url.substring(0,3).equals("www")){
@@ -115,6 +122,8 @@ public class LayoutController implements Initializable {
 			dt.play();
 			rightTabPane.setPadding(new Insets(0, 0, 0, 0));
 			isLeftPane = true;
+			leftDivideImg.setImage(new Image(this.getClass().getResourceAsStream("./icon/full_to_half.png")));
+			rightDivideImg.setImage(new Image(this.getClass().getResourceAsStream("./icon/full_to_half.png")));
 		}
 		else if((isLeftPane == true && isRightPane == false) || (isLeftPane == false && isRightPane == true)){
 			dt.setToValue(.5);
@@ -122,6 +131,8 @@ public class LayoutController implements Initializable {
 			rightTabPane.setPadding(new Insets(0, 30, 0, 0));
 			isLeftPane = false;
 			isRightPane = false;
+			leftDivideImg.setImage(new Image(this.getClass().getResourceAsStream("./icon/left_to_full.png")));
+			rightDivideImg.setImage(new Image(this.getClass().getResourceAsStream("./icon/right_to_full.png")));
 		}
 	}
 	
@@ -134,6 +145,8 @@ public class LayoutController implements Initializable {
 			dt.play();
 			leftTabPane.setPadding(new Insets(0,0,0,0));
 			isRightPane = true;
+			leftDivideImg.setImage(new Image(this.getClass().getResourceAsStream("./icon/full_to_half.png")));
+			rightDivideImg.setImage(new Image(this.getClass().getResourceAsStream("./icon/full_to_half.png")));
 		}
 		else if((isLeftPane == true && isRightPane == false) || (isLeftPane == false && isRightPane == true)){
 			dt.setToValue(.5);
@@ -141,6 +154,8 @@ public class LayoutController implements Initializable {
 			leftTabPane.setPadding(new Insets(0,0,0,30));
 			isLeftPane = false;
 			isRightPane = false;
+			leftDivideImg.setImage(new Image(this.getClass().getResourceAsStream("./icon/left_to_full.png")));
+			rightDivideImg.setImage(new Image(this.getClass().getResourceAsStream("./icon/right_to_full.png")));
 		}
 		
 	}

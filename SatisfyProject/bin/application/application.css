@@ -1,6 +1,6 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .button{
-	
+	-fx-background-color:#ffffff;
 }
 .split-menu-button{
 	
@@ -9,18 +9,23 @@
 	
 }
 .text-field{
+	-fx-background-color: #96b946,#96b946,white;
+	-fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
 }
-.split-pane{
-	
-}
-.tab-pane .tab-header-area .tab-header-background {
-	-fx-background-color: rgb(255,255,255);
+.text-field:focused{
+	-fx-background-color: #96b946,#96b946,white;
+	-fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
 }
 
-.tab-pane
-{
-    
-    
+.split-pane *.split-pane-divider{
+	//-fx-background-color:#ffffff;
+	-fx-padding:0 1 0 1;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+	-fx-background-color: #ffffff;
+	-fx-border-color:#000000;
+	-fx-border-width:1px;
 }
 
 .tab{
@@ -29,7 +34,6 @@
 .tab-pane .tab
 {
     -fx-background-color: #e6e6e6;
-
 }
 
 .tab-pane .tab:selected
@@ -49,12 +53,28 @@
     -fx-text-fill: #96b946;
 }
 
-.web-view{
-	
-}
 .list-view{
-	
+	-fx-padding:2px;
+	-fx-background-color:#ffffff;
+	-fx-border-color:#000000;
+	-fx-border-width:1px;
 }
+.list-cell{
+}
+
+.my-cell{
+	-fx-background-color:#3c3c3c;
+	-fx-background-radius:3px;
+	-fx-border-radius:3px;
+	-fx-border-color:#ffffff;
+	-fx-border-width:1px;
+	-fx-text-fill:#96b946;
+}
+.my-cell-null{
+	//-fx-background-color:#aaaaaa;
+	-fx-background-color:#ffffff;
+}
+
 .context-menuu{
 	
 }

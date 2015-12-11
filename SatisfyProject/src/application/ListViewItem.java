@@ -22,6 +22,8 @@ public class ListViewItem extends ListCell<String>{
     	super.updateItem(item, empty);
     	//System.out.println(item);
     	if(item != null){
+    		this.getStyleClass().remove("my-cell-null");
+    		this.getStyleClass().add("my-cell");
     		String[] items = item.split(",");
     		if(items.length == 2){
 	    		String url = items[0];
@@ -32,7 +34,11 @@ public class ListViewItem extends ListCell<String>{
 		    	setText(title);
 		    	setTooltip(tip);
     		}
+    	}else{
+    		this.getStyleClass().remove("my-cell");
+    		this.getStyleClass().add("my-cell-null");
     	}
+    	
     }
 	public Image getIconImage(String url){
 		//url = "http://www.google.com/s2/favicons?domain=www.yahoo.co.jp";
