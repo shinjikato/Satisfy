@@ -1,6 +1,0 @@
-.web-view .scroll-bar:vertical .tack{
-	-fx-background-color : #ffffff;
-}
-.web-view .scroll-bar:vertical .thumb{
-	-fx-background-color : #ffffff;
-}

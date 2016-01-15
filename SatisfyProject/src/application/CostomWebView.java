@@ -42,7 +42,7 @@ public class CostomWebView {
 		web = new WebView();
 		web.getStylesheets().add(getClass().getResource("webView.css").toExternalForm());
 		AddListeners();
-
+		
 		/*web.getChildrenUnmodifiable().addListener(new ListChangeListener<Node>(){
 			@Override
 			public void onChanged(	javafx.collections.ListChangeListener.Change<? extends Node> c) {
@@ -199,9 +199,16 @@ public class CostomWebView {
 		
 	}
 	public String toFaviURL(String url){
-		int s = url.indexOf(":")+3;
-		int e = url.indexOf("/",s);
-		String faviURL = url.substring(0,e) + "/favicon.ico";
+		String faviURL = null;
+		if(url.substring(0,4).equals("file")){
+			int e = url.length() - "index.html".length();
+			faviURL = url.substring(0,e) + "icon.png";
+		}else{
+			int s = url.indexOf(":")+3;
+			int e = url.indexOf("/",s);
+			faviURL = url.substring(0,e) + "/favicon.ico";
+		}
+		System.out.println(url+"   :   "+faviURL+"  ");
 		return faviURL;
 	}
 	public static BufferedImage resize(BufferedImage img, int newW, int newH) { 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LayoutController">
+   <children>
+       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+             <Button mnemonicParsing="false" onAction="#backButtonAction" prefHeight="21.0" prefWidth="30.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="23.0">
+                     <image>
+                        <Image url="@icon/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+             <Button mnemonicParsing="false" onAction="#nextButtonAction" prefHeight="26.0" prefWidth="35.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="23.0">
+                     <image>
+                        <Image url="@icon/next.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+             <Button mnemonicParsing="false" onAction="#reloadButtonAction" prefHeight="26.0" prefWidth="28.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="23.0">
+                     <image>
+                        <Image url="@icon/reload.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+             <Button mnemonicParsing="false" onAction="#leftDivideAction" prefHeight="26.0" prefWidth="28.0">
+               <graphic>
+                  <ImageView fx:id="leftDivideImg" fitHeight="23.0" fitWidth="35.0">
+                     <image>
+                        <Image url="@icon/left_to_full.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+             <Button mnemonicParsing="false" onAction="#rightDivideAction" prefHeight="26.0" prefWidth="28.0">
+               <graphic>
+                  <ImageView fx:id="rightDivideImg" fitHeight="23.0" fitWidth="35.0">
+                     <image>
+                        <Image url="@icon/right_to_full.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+          </children>
+       </HBox>
+       <TextField fx:id="urlField" depthTest="ENABLE" focusTraversable="false" layoutX="239.0" onAction="#textFiledEnterAction" prefHeight="26.0" prefWidth="546.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0" />
+      <Button mnemonicParsing="false" onAction="#onCreateSettingPane" text="Button" AnchorPane.rightAnchor="0.0" />
+       <SplitPane fx:id="splitPane" dividerPositions="0.5" prefHeight="370.0" prefWidth="517.0" style="-fx-background-color: ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+          <items>
+             <AnchorPane>
+                <children>
+                  <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children> <!-- tabClosingPolicy="UNAVAILABLE" -->
+                         <TabPane fx:id="leftTabPane" onMouseClicked="#selectTabPane" tabClosingPolicy="ALL_TABS" StackPane.alignment="TOP_RIGHT">
+                           <tabs>
+                              <Tab fx:id="leftAddTab" closable="false" onSelectionChanged="#leftTabAddAction" text="+">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </Tab>
+                           </tabs>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                         </TabPane>
+                        <ListView fx:id="leftFavoritebar" maxWidth="-Infinity" onMouseClicked="#leftbarClicked" onMouseEntered="#leftbarOverMouse" onMouseExited="#leftbarOutMouse" prefHeight="1047.0" prefWidth="30.0" StackPane.alignment="TOP_LEFT">
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#addPageleft" text="AddPage" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                        </ListView>
+                     </children>
+                  </StackPane>
+                </children>
+             </AnchorPane>
+             <AnchorPane prefHeight="361.0" prefWidth="301.0">
+                <children>
+                  <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                         <TabPane fx:id="rightTabPane" onMouseClicked="#selectTabPane" tabClosingPolicy="ALL_TABS" StackPane.alignment="TOP_RIGHT">
+                            <tabs>
+                              <Tab fx:id="rightAddTab" closable="false" onSelectionChanged="#rightTabAddAction" text="+">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                            </tabs>
+                           <padding>
+                              <Insets right="30.0" />
+                           </padding>
+                         </TabPane>
+                        <ListView fx:id="rightFavoritebar" maxWidth="-Infinity" onMouseClicked="#rightbarClicked" onMouseEntered="#rightbarOverMouse" onMouseExited="#rightbarOutMouse" prefHeight="1081.0" prefWidth="30.0" StackPane.alignment="TOP_RIGHT">
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#addPageRight" text="AddPage" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                        </ListView>
+                     </children>
+                  </StackPane>
+                </children>
+             </AnchorPane>
+          </items>
+       </SplitPane>
+   </children>
+</AnchorPane>

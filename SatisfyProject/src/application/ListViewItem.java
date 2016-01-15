@@ -37,9 +37,13 @@ public class ListViewItem extends ListCell<String>{
     	}else{
     		this.getStyleClass().remove("my-cell");
     		this.getStyleClass().add("my-cell-null");
+    		this.setGraphic(null);
+    		this.setText(null);
     	}
     	
     }
+    
+
 	public Image getIconImage(String url){
 		//url = "http://www.google.com/s2/favicons?domain=www.yahoo.co.jp";
 		InputStream input = null;

@@ -54,12 +54,8 @@
                </graphic></Button>
           </children>
        </HBox>
-       <SplitMenuButton mnemonicParsing="false" onAction="#setUrlAction" prefHeight="26.0" prefWidth="28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <items>
-           <MenuItem mnemonicParsing="false" onAction="#onCreateSettingPane" text="設定" />
-         </items>
-       </SplitMenuButton>
-       <TextField fx:id="urlField" depthTest="ENABLE" focusTraversable="false" layoutX="239.0" onAction="#textFiledEnterAction" prefHeight="26.0" prefWidth="546.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
+       <TextField fx:id="urlField" depthTest="ENABLE" focusTraversable="false" layoutX="239.0" onAction="#textFiledEnterAction" prefHeight="26.0" prefWidth="546.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0" />
+      <Button mnemonicParsing="false" onAction="#onCreateSettingPane" text="Button" AnchorPane.rightAnchor="0.0" />
        <SplitPane fx:id="splitPane" dividerPositions="0.5" prefHeight="370.0" prefWidth="517.0" style="-fx-background-color: ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
           <items>
              <AnchorPane>
@@ -82,7 +78,8 @@
                            <contextMenu>
                               <ContextMenu>
                                 <items>
-                                  <MenuItem mnemonicParsing="false" onAction="#addPageLeft" text="AddPage" />
+                                  <MenuItem mnemonicParsing="false" onAction="#addPageleft" text="AddPage" />
+                                    <MenuItem mnemonicParsing="false" onAction="#deletePage" text="delete" />
                                 </items>
                               </ContextMenu>
                            </contextMenu>
@@ -112,6 +109,7 @@
                               <ContextMenu>
                                 <items>
                                   <MenuItem mnemonicParsing="false" onAction="#addPageRight" text="AddPage" />
+                                    <MenuItem mnemonicParsing="false" onAction="#deletePage" text="delete" />
                                 </items>
                               </ContextMenu>
                            </contextMenu>
