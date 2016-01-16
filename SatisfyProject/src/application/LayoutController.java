@@ -1,6 +1,13 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -209,6 +216,7 @@ public class LayoutController implements Initializable {
 		String title = selecttab.getText();
 		leftFavoritebar.getItems().add(url+","+title);
 		rightFavoritebar.getItems().add(url+","+title);
+		favoriteWriter(leftFavoritebar);
 	}
 	
 	@FXML
@@ -219,6 +227,7 @@ public class LayoutController implements Initializable {
 		String title = selecttab.getText();
 		leftFavoritebar.getItems().add(url+","+title);
 		rightFavoritebar.getItems().add(url+","+title);
+
 	}
 	@FXML
 	private void deletePage(ActionEvent event){
@@ -228,6 +237,7 @@ public class LayoutController implements Initializable {
 		}
 		leftFavoritebar.getItems().remove(selected);
 		rightFavoritebar.getItems().remove(selected);
+		favoriteWriter(leftFavoritebar);
 		
 	}
 	@FXML
@@ -304,24 +314,57 @@ public class LayoutController implements Initializable {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		}	
+	}
+
+	void favoriteReader(){	
+		File file = new File("./favorite.save");
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String line = br.readLine();
+			while(line != null){
+				leftFavoritebar.getItems().add(line);
+				rightFavoritebar.getItems().add(line);
+				line = br.readLine();
+				
+			}
+			br.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 		}
 		
 	}
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		isLeftPane = isRightPane = false;
-		splitPane.setDividerPositions(0.5,0.5);
-		System.setProperty("http.proxyHost", "proxy.salesio-sp.ac.jp");
-		System.setProperty("http.proxyPort", "7080");
+	void favoriteWriter(ListView<String> favorite){
+		File file = new File("./favorite.save");
+		PrintWriter pw=null;
+		try {
+			pw = new PrintWriter( new BufferedWriter(new FileWriter(file)));
+			for(int i=0;i<favorite.getItems().size();i++){
+				pw.println(favorite.getItems().get(i));			
+			}
+			pw.close();
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+	}
+	void settingListView(){
+
 		leftFavoritebar.setCellFactory(new Callback<ListView<String>, 
-			ListCell<String>>() {
-	            @Override 
-	            public ListCell<String> call(ListView<String> list) {
-	                return new ListViewItem();
-	            }
-        	}
-		);;
+				ListCell<String>>() {
+		            @Override 
+		            public ListCell<String> call(ListView<String> list) {
+		                return new ListViewItem();
+		            }
+	        	}
+			);;
+
 		rightFavoritebar.setCellFactory(new Callback<ListView<String>, 
 			ListCell<String>>() {
 	            @Override 
@@ -330,9 +373,14 @@ public class LayoutController implements Initializable {
 	            }
         	}
 		);;
-
 	}
-	
-
-	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		isLeftPane = isRightPane = false;
+		splitPane.setDividerPositions(0.5,0.5);
+		System.setProperty("http.proxyHost", "proxy.salesio-sp.ac.jp");
+		System.setProperty("http.proxyPort", "7080");
+		settingListView();
+		favoriteReader();
+	}
 }

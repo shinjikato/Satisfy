@@ -2,6 +2,7 @@ package application;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -54,10 +55,12 @@ public class ListViewItem extends ListCell<String>{
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch(FileNotFoundException e){
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		if (input == null){
 			//System.out.println("test3");
 			input = getClass().getResourceAsStream("default.ico");

@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.fxml.FXMLLoader;
-
-import com.guigarage.flatterfx.*;
 public class Main extends Application {
 	
 	@Override
@@ -28,5 +26,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+
 	}
+
 }
