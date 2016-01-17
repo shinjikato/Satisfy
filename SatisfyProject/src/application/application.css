@@ -41,6 +41,7 @@
     -fx-background-color: #3c3c3c;
 }
 
+
 .tab .tab-label { 
     -fx-alignment: CENTER;
     -fx-text-fill: #828282;
@@ -76,5 +77,7 @@
 }
 
 .context-menuu{
-	
+}
+.selectedTabPane{
+	-fx-border-color:#96b946;
 }

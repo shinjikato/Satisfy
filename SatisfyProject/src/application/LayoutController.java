@@ -66,6 +66,7 @@ public class LayoutController implements Initializable {
 	
 	boolean isLeftPane,isRightPane;
 	private WebView lastClickWebview;
+	private TabPane lastSelectTabPane;
 	Button btn;
 	
 	@FXML
@@ -193,9 +194,12 @@ public class LayoutController implements Initializable {
 
 	@FXML
 	private void selectTabPane(Event event){
-		TabPane tabPane = (TabPane)event.getSource();
-		Tab selecttab = tabPane.getSelectionModel().getSelectedItem();
-		
+		if(lastSelectTabPane != null){
+			lastSelectTabPane.getStyleClass().remove("selectedTabPane");
+		}
+		lastSelectTabPane = (TabPane)event.getSource();
+		lastSelectTabPane.getStyleClass().add("selectedTabPane");
+		Tab selecttab = lastSelectTabPane.getSelectionModel().getSelectedItem();
 		WebView node = (WebView)selecttab.getContent();
 		lastClickWebview = node;
 		
@@ -355,7 +359,6 @@ public class LayoutController implements Initializable {
 
 	}
 	void settingListView(){
-
 		leftFavoritebar.setCellFactory(new Callback<ListView<String>, 
 				ListCell<String>>() {
 		            @Override 
@@ -376,6 +379,7 @@ public class LayoutController implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		lastSelectTabPane = null;
 		isLeftPane = isRightPane = false;
 		splitPane.setDividerPositions(0.5,0.5);
 		System.setProperty("http.proxyHost", "proxy.salesio-sp.ac.jp");
